@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <MainHeader></MainHeader>
-      <SearchBar></SearchBar>
+      <SearchBar myProp="PropFromOutside"></SearchBar>
       <Results></Results>
       {/* <Results></Results> */}
       {/* <ClassComponent></ClassComponent> */}

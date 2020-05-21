@@ -34,7 +34,7 @@ export default class ClassComponent extends Component {
     render() {
         console.log("render");
         return (
-            <div></div>
+            <div>This is a class component</div>
         );
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Results.css';
 import NewsCard from '../NewsCard/NewsCard';
 
@@ -51,40 +51,81 @@ let cardArray = [
     }
 ]
 
-function Results() {
-    return (
-
-        <div className="results">
-            {
-                cardArray.map(
-                    (obj, index) => {
-                        return <NewsCard
-                        key={index}
-                        title={obj.title}
-                        src={obj.imgSrc}
-                        desc={obj.desc}
-                        author={obj.author}
-                        >
-                        </NewsCard>
+class Results extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            // data: [...cardArray]
+            data: []
+        }
+    }
+    componentDidMount() {
+        let myPromise = fetch("https://newsapi.org/v2/top-headlines?country=in&apiKey=65aaabc0ccc64c9fb10c353ce53b1f38");
+        myPromise.then(function (response) {
+            response.json().then(
+                function (responseInner) {
+                    if (responseInner.articles) {
+                        // savedData = [...responseInner.articles];
+                        console.log(responseInner.articles);
+                        this.setState({
+                            data: [...responseInner.articles]
+                        })
                     }
-                )
-            }
-            {/* {
-                cardArray.map(
-                    (obj)=>{
-                        return <NewsCard 
-                        title={obj.title} 
-                        author={obj.author} 
-                        desc={obj.desc}
-                        src={obj.imgSrc}></NewsCard>       
-                    }
-                )
-            } */}
-
-            {/* <NewsCard title="Hii" author="author" desc="description"></NewsCard>
-            <NewsCard title="Hii" author="author" desc="description"></NewsCard> */}
-        </div>
-    )
+                }.bind(this)
+            )
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }.bind(this)
+        ).catch(function (error) {
+            console.log(error);
+        })
+        console.log("componentDidMount");
+    }
+    render() {
+        return (
+            <div className="results">
+                {
+                    this.state.data.map(
+                        (obj, index) => {
+                            return <NewsCard
+                                key={index}
+                                title={obj.title}
+                                src={obj.urlToImage}
+                                desc={obj.description}
+                                author={obj.author}
+                            >
+                            </NewsCard>
+                        }
+                    )
+                }
+            </div>
+        );
+    }
 }
 
 export default Results;
+
+// function Results() {
+//     return (
+
+//         <div className="results">
+//             {
+//                 cardArray.map(
+//                     (obj, index) => {
+//                         return <NewsCard
+//                         key={index}
+//                         title={obj.title}
+//                         src={obj.imgSrc}
+//                         desc={obj.desc}
+//                         author={obj.author}
+//                         >
+//                         </NewsCard>
+//                     }
+//                 )
+//             }
+//         </div>
+//     )
+// }
+
+// export default Results;
