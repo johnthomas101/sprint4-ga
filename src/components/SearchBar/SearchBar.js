@@ -16,6 +16,7 @@ class SearchBar extends Component {
     console.log("getDerivedStateFromProps");
     console.log(props);
     console.log(state);
+    return state;
   }
 
   componentDidMount() {
@@ -29,6 +30,12 @@ class SearchBar extends Component {
     })
   }
 
+  handleKeyUp = (evt) => {
+    if(evt.keyCode == 13){
+      this.props.submitHandler(evt.target.value);
+    }
+  }
+
   render() {
     console.log("Render");
     return (
@@ -36,6 +43,7 @@ class SearchBar extends Component {
         <input
           className="input-box"
           onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
           type="text"
           value={this.state.text} />
         {/* <div> state: {this.state.text}</div>

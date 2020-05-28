@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Results.css';
 import NewsCard from '../NewsCard/NewsCard';
+import axios from 'axios-proxy-fix';
 
 let cardArray = [
     {
@@ -60,33 +61,27 @@ class Results extends Component {
         }
     }
     componentDidMount() {
-        let myPromise = fetch("https://newsapi.org/v2/top-headlines?country=in&apiKey=65aaabc0ccc64c9fb10c353ce53b1f38");
-        myPromise.then(function (response) {
-            response.json().then(
-                function (responseInner) {
-                    if (responseInner.articles) {
-                        // savedData = [...responseInner.articles];
-                        console.log(responseInner.articles);
-                        this.setState({
-                            data: [...responseInner.articles]
-                        })
-                    }
-                }.bind(this)
-            )
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }.bind(this)
-        ).catch(function (error) {
-            console.log(error);
-        })
+
+        // let myPromise = axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=65aaabc0ccc64c9fb10c353ce53b1f38");
+        // myPromise.then(function (response) {
+        //     console.log(response.data.articles);
+
+        //     this.setState({
+        //         data: [...response.data.articles]
+        //     })
+
+        // }.bind(this)
+        // ).catch(function (error) {
+        //     console.log(error);
+        // })
         console.log("componentDidMount");
     }
     render() {
+        console.log(this.props.data);
         return (
             <div className="results">
                 {
-                    this.state.data.map(
+                    this.props.data.map(
                         (obj, index) => {
                             return <NewsCard
                                 key={index}

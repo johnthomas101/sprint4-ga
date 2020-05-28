@@ -6,13 +6,18 @@ import SearchBar from './components/SearchBar/SearchBar';
 import MainHeader from './components/MainHeader/MainHeader';
 import Results from './components/Results/Results';
 import ClassComponent from './components/ClassComponent/ClassComponent';
+import TimeComponent from './components/TimeComponent/TimeComponent';
+import Parent from './components/Parent/Parent';
+import SearchPlusResult from './components/SearchPlusResult/SearchPlusResult';
 
 function App() {
+  let testData =  "This is some test data";
   return (
     <div>
-      <MainHeader></MainHeader>
-      <SearchBar myProp="PropFromOutside"></SearchBar>
-      <Results></Results>
+      <MainHeader/>
+      <SearchPlusResult/>
+      {/* <TimeComponent testData={testData}></TimeComponent> */}
+      {/* <Parent></Parent> */}
       {/* <Results></Results> */}
       {/* <ClassComponent></ClassComponent> */}
     </div>
