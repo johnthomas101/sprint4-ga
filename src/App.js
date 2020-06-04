@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg'; // image import
 import './App.css'; // css import
 
+
 import SearchBar from './components/SearchBar/SearchBar';
 import MainHeader from './components/MainHeader/MainHeader';
 import Results from './components/Results/Results';
@@ -9,17 +10,23 @@ import ClassComponent from './components/ClassComponent/ClassComponent';
 import TimeComponent from './components/TimeComponent/TimeComponent';
 import Parent from './components/Parent/Parent';
 import SearchPlusResult from './components/SearchPlusResult/SearchPlusResult';
+import ReduxComp from './components/ReduxComp/ReduxComp';
+import OtherReduxComp from './components/OtherReduxComp/OtherReduxComp';
 
 function App() {
-  let testData =  "This is some test data";
+  let testData = "This is some test data";
   return (
     <div>
-      <MainHeader/>
-      <SearchPlusResult/>
-      {/* <TimeComponent testData={testData}></TimeComponent> */}
-      {/* <Parent></Parent> */}
-      {/* <Results></Results> */}
-      {/* <ClassComponent></ClassComponent> */}
+      {/* <MainHeader />
+      <SearchPlusResult /> */}
+      <ReduxComp />
+      <OtherReduxComp />
+      <OtherReduxComp />
+      <OtherReduxComp />
+      <OtherReduxComp />
+      <OtherReduxComp />
+      <OtherReduxComp />
+      
     </div>
   )
 }
